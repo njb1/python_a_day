@@ -1,5 +1,8 @@
 # src/medium.py
 
+from datetime import datetime
+
+
 def mask_credit_card(card_number) -> str:
     """
     Masks all but the last four digits of a credit card number.
@@ -60,6 +63,38 @@ def to_spongecase(text):
 
     return converted_text
 
-if __name__ == "__main__":
-    text = "Enter a string"
-    print(to_spongecase(text))
+
+def is_friday_13(month, year):
+    """
+    Determines if the 13th day of a given month and year falls on a Friday.
+    Args: month (int): The month as an integer (1-12).
+        year (int): The year as a four-digit integer.
+    Returns: bool: True if the 13th is a Friday, False otherwise.
+    """
+    is_friday_13 = False
+    date = datetime(year, month, 13)
+    if date.weekday() == 4:  # 4 corresponds to Friday
+        is_friday_13 = True
+    else:
+        is_friday_13 = False
+    return is_friday_13
+
+
+def harmonic_sum(n):
+    """
+    Calculate the nth harmonic sum.
+    The harmonic sum is defined as the sum of the reciprocals of the first n natural numbers:
+        H(n) = 1 + 1/2 + 1/3 + ... + 1/n
+    Args:
+        n (int): The number of terms in the harmonic sum.
+    Returns:
+        float: The harmonic sum rounded to two decimal places.
+    """
+    sum = 0
+    for i in range(1, n + 1):
+        if i == 1:
+            sum = 1
+        else:
+            sum += 1 / i
+    return round(sum, 2)
+    
